@@ -9,30 +9,26 @@ class MultiAgentes:
     pass
 
   def interactuarAgentes(self):
-
     print("-- Agente Agricultor --")
     agricultor = AgenteReactivoBasadoModelo(MODELO_A, REGLAS_A, 'sin_semillas', 'obtener_semillas')
-    percepcion = input("Indicar Percepcion: ")
-    while percepcion:
-      accion = agricultor.actuar(percepcion)
-      print(accion)
-      percepcion = input("Indicar Percepcion: ")
+    accionesAgricultor = ["semillas","primavera","huerto","sembrado","seco"]
+    for accion in accionesAgricultor:
+      respuesta = agricultor.actuar(accion)
+      print(respuesta)
+    
+    print("-- Agente Control de calidad --")
+    inspeccionador = AgenteReactivoBasadoModelo(MODELO_C, REGLAS_C, 'sin_tomate', 'pedir_tomate')
+    accionesAgenteCalidad = ["tomate","maduro","revisado","tomate","no_maduro","revisado","tomate","podrido","revisado"]
+    for accion in accionesAgenteCalidad:
+      respuesta = inspeccionador.actuar(accion)
+      print(respuesta)
 
-    # print("-- Agente Vendedor --")
-    # agente = AgenteReactivoSimple(REGLAS_V)
-    # percepcion = input("Introduce una percepcion: ")
-    # while percepcion:
-    #     action = agente.actuar(percepcion, 'esperar')
-    #     print("Accion: ", action)
-    #     percepcion = input("Introduce una percepcion: ")
-
-    # print("-- Agente Control de calidad --")
-    # control_calidad = AgenteReactivoBasadoModelo(MODELO_C, REGLAS_C, 'sin_tomate', 'pedir_tomate')
-    # percepcion = input("Indicar Percepcion: ")
-    # while percepcion:
-    #   accion = control_calidad.actuar(percepcion)
-    #   print(accion)
-    #   percepcion = input("Indicar Percepcion: ")
+    print("-- Agente Vendedor --")
+    agenteVendedor = AgenteReactivoSimple(REGLAS_V)
+    accionesAgenteVendedor = ["preguntar","comprar","facturar"]
+    for accion in accionesAgenteVendedor:
+      respuesta = agenteVendedor.actuar(accion)
+      print(respuesta)
 
 multiagentes = MultiAgentes()
 

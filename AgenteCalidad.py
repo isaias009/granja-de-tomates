@@ -6,7 +6,7 @@ REGLAS = {
   'con_tomate': 'revisar',
   'tomate_maduro': 'preparar_venta',
   'tomate_podrido': 'desechar',
-  'tomate_no-maduro': 'almacenar'
+  'tomate_no_maduro': 'almacenar'
 }
 
 MODELO = {
@@ -16,7 +16,7 @@ MODELO = {
   ('con_tomate', 'revisar', 'no_maduro'): 'tomate_no_maduro',
   ('tomate_maduro', 'preparar_venta', 'revisado'): 'sin_tomate',
   ('tomate_podrido', 'desechar', 'revisado'): 'sin_tomate',
-  ('tomate_no-maduro', 'almacenar', 'revisado'): 'sin_tomate',
+  ('tomate_no_maduro', 'almacenar', 'revisado'): 'sin_tomate',
 }
 
 class AgenteCalidad:

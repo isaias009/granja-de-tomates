@@ -10,7 +10,7 @@ Created on Thu Jun 23 11:25:41 2022
 REGLAS =  {  
   # Agente vendedor
   'comprar' : 'vender_tomate',
-  'preguntar' : 'responder_si_hay_disponoble',
+  'preguntar' : 'responder_si_hay_disponible',
   'facturar'  : 'pagar',
 }
 
