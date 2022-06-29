@@ -1,23 +1,26 @@
-# Estados = 
-# sin-semillas, con-semillas, estacion-primavera, estacion-invierno, estacion-otonio, estacion-verano
-
-# Acciones = 
-
-
-REGLAS = {
-  'sin-tomate': 'pedir-tomate',
-  'con-tomate': 'revisar',
-  'tomate-maduro': 'preparar-venta',
-  'tomate-podrido': 'desechar',
-  'tomate-no-maduro': 'almacenar'
+REGLAS_A = {
+  'sin-semillas':'obtener-semillas',
+  'con-semillas':'verificar-estacion',
+  'estacion-primavera':'preparar-huerto',
+  'estacion-invierno':'esperar-primavera',
+  'estacion-otonio':'esperar-primavera',
+  'estacion-verano':'esperar-primavera',
+  'huerto-listo': 'sembrar-semillas',
+  'huerto-seco': 'regar-huerto',
+  'semillas-germinadas': 'trasladar-huerto',
+  'tomate-listo': 'recoger-tomates'
 }
 
-MODELO = {
-  ('sin-tomate', 'pedir-tomate', 'tomate'): 'con-tomate',
-  ('con-tomate', 'revisar', 'maduro'): 'tomate-maduro',
-  ('con-tomate', 'revisar', 'podrido'): 'tomate-podrido',
-  ('con-tomate', 'revisar', 'no-maduro'): 'tomate-no-maduro',
-  ('tomate-maduro', 'preparar-venta', 'revisado'): 'sin-tomate',
-  ('tomate-podrido', 'desechar', 'revisado'): 'sin-tomate',
-  ('tomate-no-maduro', 'almacenar', 'revisado'): 'sin-tomate',
+MODELO_A = {
+  ('sin-semillas','obtener-semillas', 'semillas'): 'con-semillas',
+  ('con-semillas','verificar-estacion', 'primavera'): 'estacion-primavera',
+  ('con-semillas','verificar-estacion', 'invierno'): 'estacion-invierno',
+  ('con-semillas','verificar-estacion', 'otonio'): 'estacion-otonio',
+  ('con-semillas','verificar-estacion', 'verano'): 'estacion-verano',
+  ('estacion-primavera', 'preparar-huerto', 'huerto'): 'huerto-listo',
+  ('estacion-invierno', 'esperar-primavera', 'semillas'): 'con-semillas',
+  ('estacion-otonio', 'esperar-primavera', 'semillas'): 'con-semillas',
+  ('estacion-verano', 'esperar-primavera', 'semillas'): 'con-semillas',
+  ('huerto-listo', 'sembrar-semillas', 'sembrado-listo'): 'huerto-seco',
+  ('huerto-seco', 'regar-huerto', 'seco'): 'huerto-humedo',
 }
