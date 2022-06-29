@@ -1,56 +1,26 @@
-from flask import Flask, jsonify, request
+from flask import Flask, request
 from flask_cors import CORS
-from modelo import AgenteReactivoBasadoModelo
-from AgenteCalidad import REGLAS, MODELO
-from AgenteAgricultor import REGLAS_A, MODELO_A
+from AgenteAgricultor import AgenteAgricultor
+from AgenteCalidad import AgenteCalidad
 from AnalisisTomate import AnalizarTomate
 
 
 app = Flask(__name__)
 CORS(app)
 
+# -- Agente control de calidad --
 @app.route('/control-de-calidad', methods=['POST'])
 def ControlCalidad():
   data = request.json
+  agente = AgenteCalidad(data['pasos'])
+  return agente.accion()
 
-  expendedora = AgenteReactivoBasadoModelo(MODELO, REGLAS, 'sin-tomate', 'pedir-tomate')
-  
-  if(len(data['pasos']) > 0):
-    accion = ''
-
-    for x in data['pasos']:
-      accion = expendedora.actuar(x)
-
-    return jsonify({
-      "message": accion
-    }) 
-
-  else:
-    return jsonify({
-      "message": expendedora.actuar('')
-    })
-
-
-@app.route('/granjero', methods=['POST'])
+# -- Agente agricultor --
+@app.route('/agricultor', methods=['POST'])
 def Granjero():
   data = request.json
-
-  expendedora = AgenteReactivoBasadoModelo(MODELO_A, REGLAS_A, 'sin-semillas', 'obtener-semillas')
-  
-  if(len(data['pasos']) > 0):
-    accion = ''
-
-    for x in data['pasos']:
-      accion = expendedora.actuar(x)
-
-    return jsonify({
-      "message": accion
-    }) 
-
-  else:
-    return jsonify({
-      "message": expendedora.actuar('')
-    })
+  agente = AgenteAgricultor(data['pasos'])
+  return agente.accion()
 
 if __name__ == '__main__':
   app.run(debug=True, port=4000)
