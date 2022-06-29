@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToMacco</title>
+
+  <link rel="stylesheet" href="./css/general.css">
+  <link rel="stylesheet" href="./css/botones.css">
+
+  <script defer src="./js/moment.js"></script>
+  <script defer src="./js/main.js" type="module"></script>
+</head>
+<body>
+  
+  <div class="contenedor">
+
+    <div class="tiempo">
+
+      <div class="cronometro">
+        <span id="estacion"></span>
+        <div id="fecha" data-velocidad="1000" data-fecha=""></div>
+        <div class="relog">
+          <span id="hora"></span>
+          <span id="min">: 00 hora(s)</span>
+        </div>
+      </div>
+    
+      <div class="controles">
+        <button class="btn-time" id="time-plus">x100</button>
+      </div>
+    </div>
+
+    <div class="acciones">
+      <button class="btn-action" id="preparar-huerto">Preparar huerto</button>
+      <button class="btn-action" id="verificar-estacion">Verificar estacion</button>
+      <button class="btn-action" id="obtener-semillas">Obtener semillas</button>
+      <button class="btn-action" id="sembrar-semillas">Sembrar semillas</button>
+      <button class="btn-action" id="regar">Regar</button>
+    </div>
+
+    <div class="recursos">
+      <div class="huerto" id="huerto">
+        <div class="sesped"></div>
+        <div class="sesped"></div>
+        <div class="sesped"></div>
+        <div class="sesped"></div>
+        <div class="sesped"></div>
+        <div class="sesped"></div>
+        <div class="sesped"></div>
+        <div class="sesped"></div>
+        <div class="sesped"></div>
+      </div>
+
+      <div class="herramientas" id="herr"></div>
+    </div>
+
+  </div>
+
+</body>
+</html>
