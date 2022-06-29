@@ -40,3 +40,11 @@ class AgenteCalidad:
       return jsonify({
         "message": self.agente.actuar('')
       })
+
+# print("-- Agente Control de calidad --")
+# control_calidad = AgenteReactivoBasadoModelo(MODELO, REGLAS, 'sin_tomate', 'pedir_tomate')
+# percepcion = input("Indicar Percepcion: ")
+# while percepcion:
+#   accion = control_calidad.actuar(percepcion)
+#   print(accion)
+#   percepcion = input("Indicar Percepcion: ")

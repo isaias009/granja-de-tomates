@@ -58,3 +58,12 @@ class AgenteAgricultor:
       return jsonify({
         "message": self.agente.actuar('')
       })
+
+
+# print("-- Agente Agricultor --")
+# agricultor = AgenteReactivoBasadoModelo(MODELO, REGLAS, 'sin_semillas', 'obtener_semillas')
+# percepcion = input("Indicar Percepcion: ")
+# while percepcion:
+#   accion = agricultor.actuar(percepcion)
+#   print(accion)
+#   percepcion = input("Indicar Percepcion: ")
