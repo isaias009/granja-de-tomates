@@ -28,8 +28,8 @@ body {
 
 
 .huerto {
-  position: relative;
   display: grid;
+  position: relative;
   background-color: rgba(255,255,255, 0.4);
   border-radius: 5px;
   max-width: 600px;
@@ -61,6 +61,11 @@ body {
 
 .semillas {
   width: 100%;
+}
+
+.germinado {
+  width: 58%;
+  margin: 20px;
 }
 
 

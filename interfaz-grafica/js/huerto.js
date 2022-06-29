@@ -11,9 +11,13 @@ const URL = 'http://127.0.0.1:4000'
 
 export const VerificarHumedad = () => {
   const regar = document.getElementById('regar');
+  const huerto = document.getElementById('huerto');
   regar.style.display = 'inline-block';
 
   regar.addEventListener('click', () => {
+
+    const cubos = Array.from(huerto.children);
+
     showRegadera();
     setTimeout(() => {
       hiddenRegadera();
@@ -24,6 +28,17 @@ export const VerificarHumedad = () => {
       .then((data) => {
         acciones(data.message)
       });
+
+    setTimeout(() => {
+      cubos.forEach((item, index) => {
+        item.innerHTML = '';
+        const semillas = document.createElement('img');
+        semillas.src = '../img/germinado.png';
+        semillas.id = 'germinado-'+index;
+        semillas.className = 'germinado';
+        item.appendChild(semillas);
+      });
+    }, 2000);
     
     regar.style.display = 'none';
   });
@@ -40,11 +55,11 @@ export const SembrarSemillas = () => {
     const cubos = Array.from(huerto.children);
     semillas.style.display = 'none';
 
-    cubos.forEach((item) => {
+    cubos.forEach((item, index) => {
+      item.innerHTML = '';
       const semillas = document.createElement('img');
-
       semillas.src = '../img/semilla.png';
-      semillas.id = 'semilla';
+      semillas.id = 'semilla-'+index;
       semillas.className = 'semillas';
       item.appendChild(semillas);
     });
